@@ -1,0 +1,15 @@
+F:\source\UCalc\UCalc\bin\Debug\UCalc.exe.config
+F:\source\UCalc\UCalc\bin\Debug\UCalc.exe
+F:\source\UCalc\UCalc\bin\Debug\UCalc.pdb
+F:\source\UCalc\UCalc\obj\Debug\UCalc.csproj.AssemblyReference.cache
+F:\source\UCalc\UCalc\obj\Debug\MainWindow.g.cs
+F:\source\UCalc\UCalc\obj\Debug\App.g.cs
+F:\source\UCalc\UCalc\obj\Debug\UCalc_MarkupCompile.cache
+F:\source\UCalc\UCalc\obj\Debug\UCalc_MarkupCompile.lref
+F:\source\UCalc\UCalc\obj\Debug\MainWindow.baml
+F:\source\UCalc\UCalc\obj\Debug\UCalc.g.resources
+F:\source\UCalc\UCalc\obj\Debug\UCalc.Properties.Resources.resources
+F:\source\UCalc\UCalc\obj\Debug\UCalc.csproj.GenerateResource.cache
+F:\source\UCalc\UCalc\obj\Debug\UCalc.csproj.CoreCompileInputs.cache
+F:\source\UCalc\UCalc\obj\Debug\UCalc.exe
+F:\source\UCalc\UCalc\obj\Debug\UCalc.pdb
