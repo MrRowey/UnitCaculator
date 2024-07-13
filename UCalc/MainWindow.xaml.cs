@@ -22,12 +22,12 @@ namespace UCalc
     {
 
         // Declaring the variables
-        int MassCost;
-        int NewMassCost;
-        int EnergyMulti;
-        int BuildTimeMulti;
-        int EnergyCost;
-        int BuildTime;
+        double MassCost;
+        double NewMassCost;
+        double EnergyMulti;
+        double BuildTimeMulti;
+        double EnergyCost;
+        double BuildTime;
 
         public MainWindow()
         {
@@ -37,9 +37,9 @@ namespace UCalc
         private void Button_Calculate_Click(object sender, RoutedEventArgs e)
         {
             // Getting the users Input
-            EnergyCost = Convert.ToInt32(ECostInput.Text);
-            MassCost = Convert.ToInt32(MCostInput.Text);
-            BuildTime = Convert.ToInt32(BTCostInput.Text);
+            EnergyCost = Convert.ToDouble(ECostInput.Text);
+            MassCost = Convert.ToDouble(MCostInput.Text);
+            BuildTime = Convert.ToDouble(BTCostInput.Text);
 
             string EResult = CaculateEMult(MassCost, EnergyCost);
             string BTResult = CaculateBTMult(MassCost, BuildTime);
@@ -48,7 +48,7 @@ namespace UCalc
             BTMultiResult.Text = BTResult;
 
         }
-        public static string CaculateEMult(int MassCost, int EnergyCost)
+        public static string CaculateEMult(double MassCost, double EnergyCost)
         {
             // Caculate the Energy and Build Time Multipliers
 
@@ -65,7 +65,7 @@ namespace UCalc
             return EMultString;
         }
 
-        public static string CaculateBTMult(int MassCost, int BuildTime)
+        public static string CaculateBTMult(double MassCost, double BuildTime)
         {
             // Caculate the Energy and Build Time Multipliers
 
@@ -93,9 +93,9 @@ namespace UCalc
 
         private void Button_Calculate2_Click(object sender, RoutedEventArgs e)
         {
-            NewMassCost = Convert.ToInt32(NewMCostInput.Text);
-            EnergyMulti = Convert.ToInt32(NewEMultiInput.Text);
-            BuildTimeMulti = Convert.ToInt32(NewBTMultiInput.Text);
+            NewMassCost = Convert.ToDouble(NewMCostInput.Text);
+            EnergyMulti = Convert.ToDouble(NewEMultiInput.Text);
+            BuildTimeMulti = Convert.ToDouble(NewBTMultiInput.Text);
 
             string NewEneryCost = CaculateEnergyCost(NewMassCost, EnergyMulti);
             string NewBuilTime = CaculateBuilTime(NewMassCost, BuildTimeMulti);
@@ -104,12 +104,12 @@ namespace UCalc
             BTCostResult.Text = NewBuilTime;
         }
 
-        public static string CaculateEnergyCost(int NewMassCost, int EnergyMulti)
+        public static string CaculateEnergyCost(double NewMassCost, double EnergyMulti)
         {
             // Caculate the Energy and Build Time Multipliers
 
             // Local Varables
-            int ECostCalc;
+            double ECostCalc;
 
             // Energy Multiplier
 
@@ -121,12 +121,12 @@ namespace UCalc
             return ECostString;
         }
 
-        public static string CaculateBuilTime(int NewMassCost, int BuildTimeMulti)
+        public static string CaculateBuilTime(double NewMassCost, double BuildTimeMulti)
         {
             // Caculate the Energy and Build Time Multipliers
 
             // Local Varables
-            int BTCalc;
+            double BTCalc;
 
             // Energy Multiplier
 

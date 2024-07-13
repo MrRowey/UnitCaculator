@@ -11,25 +11,23 @@
             <ImageBrush ImageSource="/Images/bg.jpg" Opacity="0.85"/>
         </Grid.Background>
         <Label x:Name="MainTitle" Content="FAF Unit Balance Caculator" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="18" FontFamily="Cascadia Mono" FontWeight="Bold"/>
-        <GroupBox Margin="30,100,500,0" Background="#D83A4558" Height="160" VerticalAlignment="Top">
-            <Grid HorizontalAlignment="Left" Width="260">
-                <Label x:Name="TitleUCost" Content="Unit Cost" HorizontalAlignment="Left" Margin="85,5,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
-                <Label x:Name="ECost" Content="Energy Cost" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-                <TextBox x:Name="ECostInput" HorizontalAlignment="Left" Margin="110,40,0,0" VerticalAlignment="Top" FontSize="14" Width="100"/>
-                <Label x:Name="MCost" Content="Mass Cost" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-                <TextBox x:Name="MCostInput" HorizontalAlignment="Left" Margin="110,80,0,0" VerticalAlignment="Top" FontSize="14" Width="100"/>
-                <Label x:Name="BTCost" Content="Build Time" HorizontalAlignment="Left" Margin="10,115,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-                <TextBox x:Name="BTCostInput" HorizontalAlignment="Left" Margin="110,120,0,0" VerticalAlignment="Top" FontSize="14" Width="100"/>
+        <GroupBox Header="Unit Cost" FontSize="16" FontWeight="Bold" Foreground="White" Margin="30,100,530,0" Background="#D83A4558" Height="145" VerticalAlignment="Top">
+            <Grid HorizontalAlignment="Left" Width="220">
+                <Label x:Name="ECost" Content="Energy Cost" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="White"/>
+                <TextBox x:Name="ECostInput" HorizontalAlignment="Left" Margin="110,15,0,0" VerticalAlignment="Top" FontSize="14" Width="100"/>
+                <Label x:Name="MCost" Content="Mass Cost" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="White"/>
+                <TextBox x:Name="MCostInput" HorizontalAlignment="Left" Margin="110,50,0,0" VerticalAlignment="Top" FontSize="14" Width="100"/>
+                <Label x:Name="BTCost" Content="Build Time" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="White"/>
+                <TextBox x:Name="BTCostInput" HorizontalAlignment="Left" Margin="110,85,0,0" VerticalAlignment="Top" FontSize="14" Width="100"/>
             </Grid>
         </GroupBox>
-        <GroupBox Margin="30,270,500,70" Background="#D83A4558" Height="120" VerticalAlignment="Top" >
+        <GroupBox Header="Cost Mulipliers" FontSize="16" FontWeight="Bold" Foreground="White" Margin="30,260,500,70" Background="#D83A4558" Height="120" VerticalAlignment="Top" >
             <Grid>
-                <Label x:Name="TitleMult" Content="Cost Multipliers" HorizontalAlignment="Left" Margin="65,5,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
-                <Label x:Name="EMult" Content="Energy Multi" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-                <Label x:Name="BTMult" Content="BuildTime Multi" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+                <Label x:Name="EMult" Content="Energy Multi" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="White"/>
+                <Label x:Name="BTMult" Content="BuildTime Multi" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="White"/>
 
-                <TextBox x:Name="EMultiResult" HorizontalAlignment="Left" Margin="130,40,0,0" VerticalAlignment="Top" FontSize="14" Width="100"/>
-                <TextBox x:Name="BTMultiResult" HorizontalAlignment="Left" Margin="130,80,0,0" VerticalAlignment="Top" FontSize="14" Width="100"/>
+                <TextBox x:Name="EMultiResult" HorizontalAlignment="Left" Margin="130,15,0,0" VerticalAlignment="Top" FontSize="14" Width="100"/>
+                <TextBox x:Name="BTMultiResult" HorizontalAlignment="Left" Margin="130,50,0,0" VerticalAlignment="Top" FontSize="14" Width="100"/>
             </Grid>
         </GroupBox>
         <Button x:Name="Button_Calculate" Content="Calculate" HorizontalAlignment="Left" Margin="50,400,0,0" VerticalAlignment="Top" Background="#D84474C1" Height="40" Width="80" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" BorderBrush="{x:Null}" Foreground="White" Click="Button_Calculate_Click">
@@ -48,26 +46,24 @@
         </Button>
 
 
-        <GroupBox Margin="480,100,30,0" Background="#D83A4558" Height="160" VerticalAlignment="Top">
+        <GroupBox Header="New Unit Cost" FontSize="16" FontWeight="Bold" Foreground="White" Margin="480,100,60,0" Background="#D83A4558" Height="160" VerticalAlignment="Top">
             <Grid HorizontalAlignment="Left" Width="260">
-                <Label x:Name="TitleNewUnitCost" Content="New Unit Cost" HorizontalAlignment="Left" Margin="85,5,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
-                <Label x:Name="NewMCost" Content="Mass Cost" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-                <TextBox x:Name="NewMCostInput" HorizontalAlignment="Left" Margin="130,40,0,0" VerticalAlignment="Top" FontSize="14" Width="100"/>
-                <Label x:Name="NewEMult" Content="Energy Multi" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-                <TextBox x:Name="NewEMultiInput" HorizontalAlignment="Left" Margin="130,80,0,0" VerticalAlignment="Top" FontSize="14" Width="100"/>
-                <Label x:Name="NewBTMult" Content="Build Time Multi" HorizontalAlignment="Left" Margin="10,115,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-                <TextBox x:Name="NewBTMultiInput" HorizontalAlignment="Left" Margin="130,120,0,0" VerticalAlignment="Top" FontSize="14" Width="100"/>
+                <Label x:Name="NewMCost" Content="Mass Cost" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="White"/>
+                <TextBox x:Name="NewMCostInput" HorizontalAlignment="Left" Margin="130,15,0,0" VerticalAlignment="Top" FontSize="14" Width="100"/>
+                <Label x:Name="NewEMult" Content="Energy Multi" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="White"/>
+                <TextBox x:Name="NewEMultiInput" HorizontalAlignment="Left" Margin="130,55,0,0" VerticalAlignment="Top" FontSize="14" Width="100"/>
+                <Label x:Name="NewBTMult" Content="Build Time Multi" HorizontalAlignment="Left" Margin="10,90,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="White"/>
+                <TextBox x:Name="NewBTMultiInput" HorizontalAlignment="Left" Margin="130,95,0,0" VerticalAlignment="Top" FontSize="14" Width="100"/>
             </Grid>
         </GroupBox>
 
-        <GroupBox Margin="485,270,30,70" Background="#D83A4558" Height="120" VerticalAlignment="Top" >
+        <GroupBox Header="New Energy &amp; BuildTime Cost" FontSize="16" FontWeight="Bold" Foreground="White" Margin="485,270,60,70" Background="#D83A4558" Height="120" VerticalAlignment="Top" >
             <Grid>
-                <Label x:Name="NewCosts" Content="New Enery / BT Costs" HorizontalAlignment="Left" Margin="50,5,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
-                <Label x:Name="NewECost" Content="Energy Cost" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-                <Label x:Name="NewBTCost" Content="BuildTime Cost" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+                <Label x:Name="NewECost" Content="Energy Cost" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="White"/>
+                <Label x:Name="NewBTCost" Content="BuildTime Cost" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="White"/>
 
-                <TextBox x:Name="ECostResult" HorizontalAlignment="Left" Margin="130,40,0,0" VerticalAlignment="Top" FontSize="14" Width="100"/>
-                <TextBox x:Name="BTCostResult" HorizontalAlignment="Left" Margin="130,80,0,0" VerticalAlignment="Top" FontSize="14" Width="100"/>
+                <TextBox x:Name="ECostResult" HorizontalAlignment="Left" Margin="130,15,0,0" VerticalAlignment="Top" FontSize="14" Width="100"/>
+                <TextBox x:Name="BTCostResult" HorizontalAlignment="Left" Margin="130,55,0,0" VerticalAlignment="Top" FontSize="14" Width="100"/>
             </Grid>
         </GroupBox>
 
