@@ -14,64 +14,56 @@ namespace UCalc
             InitializeComponent();
         }
 
-        private void Button_Calculate_Click(object sender, RoutedEventArgs e)
+        private static string GetEnergyMulti(double MassCost, double EnergyCost)
         {
-            // Getting the users Input
-            double EnergyCost = Convert.ToDouble(ECostInput.Text);
-            double MassCost = Convert.ToDouble(MCostInput.Text);
-            double BuildTime = Convert.ToDouble(BTInput.Text);
-
-
-            string EResult = CaculateEMult(MassCost, EnergyCost);
-            string BTResult = CaculateBTMult(MassCost, BuildTime);
-
-            EMultiInput.Text = EResult;
-            BTMultiInput.Text = BTResult;
-
-        }
-        public static string CaculateEMult(double MassCost, double EnergyCost)
-        {
-            // Caculate the Energy and Build Time Multipliers
-
-            // Energy Multiplier
-
+            // Caculating the Energy Multiplier
             double EMultCalc = EnergyCost / MassCost;
 
             // Convert to String
             String EMultString = Convert.ToString(Math.Round(EMultCalc, 2));
 
+            // Return the Energy Multiplier
             return EMultString;
         }
 
-        public static string CaculateBTMult(double MassCost, double BuildTime)
+        private static string GetBuildTimeMulti(double MassCost, double BuildTime)
         {
-            // Caculate the Energy and Build Time Multipliers
-
-            // Energy Multiplier
+            // Caculating the Build Time Multiplier
             double BTMultCalc = BuildTime / MassCost;
 
             // Convert to String
             String BTMultString = Convert.ToString(Math.Round(BTMultCalc, 2));
 
+            // Return the Build Time Multiplier
             return BTMultString;
         }
 
-        private void Button_Clear_Click(object sender, RoutedEventArgs e)
+        private void Button_Caculate_Mulit_Click(object sender, RoutedEventArgs e)
         {
-            ECostInput.Text = "";
-            MCostInput.Text = "";
-            BTInput.Text = "";
-            EMultiInput.Text = "";
-            BTMultiInput.Text = "";
+            // Getting the users Input
+            double EnergyCost = Convert.ToDouble(EnergyCostInput.Text);
+            double MassCost = Convert.ToDouble(MassCostInput.Text);
+            double BuildTime = Convert.ToDouble(BuildTimeCostInput.Text);
+
+            // Caculate the Energy and Build Time Multipliers
+            string EResult = GetEnergyMulti(MassCost, EnergyCost);
+            string BTResult = GetBuildTimeMulti(MassCost, BuildTime);
+
+            // Display the Results
+            MulitResult.Text = "Energy Mulit: " + EResult + "\nBuild Time Multi: " + BTResult;
         }
 
-        public static string CaculateEnergyCost(double NewMassCost, double EnergyMulti)
+        private void Button_Clear_Mulitplier_Click(object sender, RoutedEventArgs e)
+        {
+            MulitResult.Text = "";
+        }
+
+
+        private static string GetEnergyCost(double MassCost, double EnergyMulti)
         {
             // Caculate the Energy and Build Time Multipliers
 
-            // Energy Multiplier
-
-            double ECostCalc = NewMassCost * EnergyMulti;
+            double ECostCalc = MassCost * EnergyMulti;
 
             // Convert to String
             String ECostString = Convert.ToString(ECostCalc);
@@ -79,13 +71,11 @@ namespace UCalc
             return ECostString;
         }
 
-        public static string CaculateBuilTime(double NewMassCost, double BuildTimeMulti)
+        private static string GetBuildTime(double MassCost, double BuildTimeMulti)
         {
             // Caculate the Energy and Build Time Multipliers
 
-            // Energy Multiplier
-
-            double BTCalc = NewMassCost * BuildTimeMulti;
+            double BTCalc = MassCost * BuildTimeMulti;
 
             // Convert to String
             String BTString = Convert.ToString(BTCalc);
@@ -93,43 +83,24 @@ namespace UCalc
             return BTString;
         }
 
-        public static string CaculateEnegyCostDiffrence(double EnergyCost, double NewEnergyCost)
+        private void Button_Calculate_Cost_Click(object sender, RoutedEventArgs e)
         {
-            // Caculate the Energy and Build Time Multipliers
+            // Getting the users Input
+            double EnergyMulit = Convert.ToDouble(NewEMultiInput.Text);
+            double MassCost = Convert.ToDouble(NewMCostInput.Text);
+            double BuildTimeMulit = Convert.ToDouble(NewBTMultiInput.Text);
 
-            double AbsolueDiffrence = Math.Abs(EnergyCost - NewEnergyCost);
-            double Average = (EnergyCost + NewEnergyCost) / 2;
 
-            double ECostCalc = AbsolueDiffrence / Average / 2;
+            string EResult = GetEnergyCost(MassCost, EnergyMulit);
+            string BTResult = GetBuildTime(MassCost, BuildTimeMulit);
 
-            double ECostCalcRounded = Math.Round(ECostCalc, 2);
-            double ECostPercentage = ECostCalcRounded * 100;
+            NewCostResult.Text = "Mass Cost: " + MassCost + "\nEnergy Cost: " + EResult + "\nBuild Time: " + BTResult;
 
-            // Convert to String
-            String ECostPercentString = Convert.ToString(ECostPercentage);
-
-            return ECostPercentString;
         }
 
-
-        private void Button_Recaculate_Click(object sender, RoutedEventArgs e)
+        private void Button_Clear_Cost_Click(object sender, RoutedEventArgs e)
         {
-            double NewMassCost = Convert.ToDouble(NewMCostInput.Text);
-            double NewEnergyMulti = Convert.ToDouble(NewEMultiInput.Text);
-            double NewBuildTimeMulti = Convert.ToDouble(BTMultiInput.Text);
-
-            string NewEneryCost = CaculateEnergyCost(NewMassCost, NewEnergyMulti);
-            string NewBuilTime = CaculateBuilTime(NewMassCost, NewBuildTimeMulti);
-            string MassCost = Convert.ToString(NewMassCost);
-
-            NewUnitStatsBox.Text = "Mass Cost: " + MassCost + "\nEnergy Cost: " + NewEneryCost + "\nBuild Time: " + NewBuilTime;
-        }
-
-        private void Button_Recaculate_Clear_Click(object sender, RoutedEventArgs e)
-        {
-            NewMCostInput.Text = "";
-            NewEMultiInput.Text = "";
-            NewBTMultiInput.Text = "";
+            NewCostResult.Text = "";
         }
     }
 }
