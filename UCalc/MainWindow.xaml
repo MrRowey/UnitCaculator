@@ -5,82 +5,202 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UCalc"
         mc:Ignorable="d"
-        Title="UnitCaculator" Height="500" Width="800">
+        Height="600" Width="920"
+        AllowsTransparency="True">
+    <Border>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition />
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="50"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Grid.Background>
+                <ImageBrush ImageSource="/Images/bg.jpg" Opacity="0.85"/>
+            </Grid.Background>
+
+            <Label x:Name="Title" Content="Unit Balance Caculator" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Grid.Column="3" Grid.Row="0"/>
+
+            <!-- Current Cost -->            
+            <Label x:Name="CostTitle" Content="Current Cost" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Grid.Column="1" Grid.Row="1"/>
+            <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Vertical" Background="#D83A4558" >
+                <Label HorizontalAlignment="Center" Content="Energy Cost" FontSize="14" FontWeight="Bold" Foreground="#FFE8D400"/>
+                <TextBox x:Name="ECostInput" FontSize="14" Width="100"/>
+                <Label HorizontalAlignment="Center" Content="Mass Cost" FontSize="14" FontWeight="Bold" Foreground="#FF00D803"/>
+                <TextBox x:Name="MCostInput" FontSize="14" Width="100"/>
+                <Label HorizontalAlignment="Center" Content="Build Time" FontSize="14" FontWeight="Bold" Foreground="#FFf"/>
+                <TextBox x:Name="btCostInput" FontSize="14" Width="100"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="Button_Calculate" Content="Calculate" Background="#D84474C1" Height="40" Width="80" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" BorderBrush="{x:Null}" Foreground="White">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="Button_Clear" Content="Clear" Background="#D8C14455" Height="40" Width="80" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" BorderBrush="{x:Null}" Foreground="White">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+            
+            <!-- Cost Multipliers Results -->
+            <StackPanel Grid.Column="1" Grid.Row="4" HorizontalAlignment="Center" Width="200" Background="#D83A4558">
+                <Label Content="Multipliers" FontSize="16" FontWeight="Bold" Foreground="#fff"/>
+                <TextBlock Margin="10,0,10,0" Foreground="White" FontSize="14"/>
+            </StackPanel>
+            
+            <!-- New Costs -->
+            <Label x:Name="NewCostTitle" Content="New Cost" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Grid.Column="1" Grid.Row="1"/>
+            <StackPanel Grid.Column="3" Grid.Row="2" Orientation="Vertical" Background="#D83A4558" >
+                <Label HorizontalAlignment="Center" Content="Energy Cost" FontSize="14" FontWeight="Bold" Foreground="#FFE8D400"/>
+                <TextBox x:Name="NewMCostInput" FontSize="14" Width="100"/>
+                <Label HorizontalAlignment="Center" Content="Mass Cost" FontSize="14" FontWeight="Bold" Foreground="#FF00D803"/>
+                <TextBox x:Name="NewEMultiInput" FontSize="14" Width="100"/>
+                <Label HorizontalAlignment="Center" Content="Build Time" FontSize="14" FontWeight="Bold" Foreground="#FFf"/>
+                <TextBox x:Name="NewBTMultiInput" FontSize="14" Width="100"/>
+            </StackPanel>
+            <StackPanel Grid.Column="3" Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="Button_ReCalculate" Content="Calculate" Background="#D84474C1" Height="40" Width="80" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" BorderBrush="{x:Null}" Foreground="White">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="Button_Clear2" Content="Clear" Background="#D8C14455" Height="40" Width="80" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" BorderBrush="{x:Null}" Foreground="White">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+
+            <!-- Cost Multipliers Results -->
+            <StackPanel Grid.Column="3" Grid.Row="4" HorizontalAlignment="Center" Width="200" Background="#D83A4558">
+                <Label Content="New Unit Costs" FontSize="16" FontWeight="Bold" Foreground="#fff"/>
+                <TextBlock Margin="10,0,10,0" Foreground="White" FontSize="14"/>
+            </StackPanel>
+
+        </Grid>
+    </Border>
+    <!--    
     <Grid Margin="0,0,0,1">
         <Grid.Background>
             <ImageBrush ImageSource="/Images/bg.jpg" Opacity="0.85"/>
         </Grid.Background>
         <Label x:Name="MainTitle" Content="FAF Unit Balance Caculator" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="18" FontFamily="Cascadia Mono" FontWeight="Bold"/>
-        <GroupBox Header="Unit Cost" FontSize="16" FontWeight="Bold" Foreground="White" Margin="30,100,530,0" Background="#D83A4558" Height="145" VerticalAlignment="Top">
-            <Grid HorizontalAlignment="Left" Width="220">
-                <Label x:Name="ECost" Content="Energy Cost" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="White"/>
-                <TextBox x:Name="ECostInput" HorizontalAlignment="Left" Margin="110,15,0,0" VerticalAlignment="Top" FontSize="14" Width="100"/>
-                <Label x:Name="MCost" Content="Mass Cost" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="White"/>
-                <TextBox x:Name="MCostInput" HorizontalAlignment="Left" Margin="110,50,0,0" VerticalAlignment="Top" FontSize="14" Width="100"/>
-                <Label x:Name="BTCost" Content="Build Time" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="White"/>
-                <TextBox x:Name="BTCostInput" HorizontalAlignment="Left" Margin="110,85,0,0" VerticalAlignment="Top" FontSize="14" Width="100"/>
+
+        <StackPanel >
+            
+        </StackPanel>
+        
+        <GroupBox Margin="100,53,0,0" Background="#D83A4558" HorizontalAlignment="Left" Width="720" Height="453" VerticalAlignment="Top">
+            <Grid HorizontalAlignment="Left" Width="720">
+                <Label x:Name="Title" Content="Caculations" HorizontalAlignment="Left" Margin="303,10,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="White"/>
+                <Label x:Name="ECost" Content="Energy Cost" HorizontalAlignment="Left" Margin="26,67,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Foreground="#FFE8D400"/>
+                <TextBox x:Name="ECostInput" HorizontalAlignment="Left" Margin="125,73,0,0" VerticalAlignment="Top" FontSize="14" Width="100"/>
+                <Label x:Name="MCost" Content="Mass Cost" HorizontalAlignment="Left" Margin="269,67,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Foreground="#FF00D803"/>
+                <TextBox x:Name="MCostInput" HorizontalAlignment="Left" Margin="355,73,0,0" VerticalAlignment="Top" FontSize="14" Width="100"/>
+                <Label x:Name="BTCost" Content="Build Time" HorizontalAlignment="Left" Margin="496,67,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Foreground="#FFEAEAEA"/>
+                <TextBox x:Name="BTInput" HorizontalAlignment="Left" Margin="588,73,0,0" VerticalAlignment="Top" FontSize="14" Width="100"/>
+                <Separator HorizontalAlignment="Center" Height="7" Margin="0,98,0,0" VerticalAlignment="Top" Width="710"/>
+                <Separator HorizontalAlignment="Center" Height="7" Margin="0,62,0,0" VerticalAlignment="Top" Width="710"/>
+                <Label x:Name="Muliplierstitle" Content="Multipliers" HorizontalAlignment="Left" Margin="76,108,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Foreground="#fff" />
+                <Label x:Name="EMultiTitle" Content="E Multi" HorizontalAlignment="Left" Margin="44,152,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Foreground="#FFE8D400"/>
+                <TextBox x:Name="EMultiInput" HorizontalAlignment="Left" Margin="108,158,0,0" VerticalAlignment="Top" FontSize="14" Width="100"/>
+                <Label x:Name="BTMultiTitle" Content="BT Multi" HorizontalAlignment="Left" Margin="34,189,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Foreground="#fff"/>
+                <TextBox x:Name="BTMultiInput" HorizontalAlignment="Left" Margin="108,195,0,0" VerticalAlignment="Top" FontSize="14" Width="100"/>
+                <Separator HorizontalAlignment="Left" Height="98" Margin="144,128,0,0" VerticalAlignment="Top" Width="152" RenderTransformOrigin="0.5,0.5">
+                    <Separator.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-90"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Separator.RenderTransform>
+                </Separator>
+                <Separator HorizontalAlignment="Left" Height="98" Margin="6,204,0,0" VerticalAlignment="Top" Width="465" RenderTransformOrigin="0.5,0.5">
+                    <Separator.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Separator.RenderTransform>
+                </Separator>
+                
+                <Label x:Name="NewCosts" Content="NewUnitStats" HorizontalAlignment="Left" Margin="547,108,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Foreground="#fff" />
+                <Label x:Name="NewEMultiTitle" Content="New E Multi" HorizontalAlignment="Left" Margin="244,173,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Foreground="#FFE8D400"/>
+                <Label x:Name="NewBTMultiTitle" Content="BT Multi" HorizontalAlignment="Left" Margin="272,0,0,0" VerticalAlignment="Center" FontSize="16" FontWeight="Bold" Foreground="#fff"/>
+                <Label x:Name="NewMCost" Content="New M Cost" HorizontalAlignment="Left" Margin="244,143,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Foreground="#FF00D803"/>
+
+
+                <TextBox x:Name="NewEMultiInput" HorizontalAlignment="Left" Margin="346,178,0,0" VerticalAlignment="Top" FontSize="14" Width="100"/>
+                <TextBox x:Name="NewBTMultiInput" HorizontalAlignment="Left" Margin="346,0,0,0" VerticalAlignment="Center" FontSize="14" Width="100"/>
+                <TextBox x:Name="NewMCostInput" HorizontalAlignment="Left" Margin="346,148,0,0" VerticalAlignment="Top" FontSize="14" Width="100"/>
+
+
+
+                <Button x:Name="Button_Calculate" Content="Calculate" HorizontalAlignment="Left" Margin="26,357,0,0" VerticalAlignment="Top" Background="#D84474C1" Height="40" Width="80" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" BorderBrush="{x:Null}" Foreground="White" Click="Button_Calculate_Click">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="Button_Clear" Content="Clear" HorizontalAlignment="Left" Margin="140,357,0,0" VerticalAlignment="Top" Background="#D8C14455" Height="40" Width="80" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" BorderBrush="{x:Null}" Foreground="White" Click="Button_Clear_Click">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="Button_Recaculate" Content="Re-Caculate" HorizontalAlignment="Left" Margin="529,357,0,0" VerticalAlignment="Top" Background="#D84474C1" Height="40" Width="80" FontSize="13.5" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" BorderBrush="{x:Null}" Foreground="White" Click="Button_Recaculate_Click">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="Button_Recaculate_Clear" Content="Clear" HorizontalAlignment="Left" Margin="620,357,0,0" VerticalAlignment="Top" Background="#D8C14455" Height="40" Width="80" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" BorderBrush="{x:Null}" Foreground="White" Click="Button_Recaculate_Clear_Click">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Label x:Name="TestChanges" Content="Test Changes" HorizontalAlignment="Left" Margin="292,108,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Foreground="#fff" />
+                <Separator HorizontalAlignment="Left" Height="98" Margin="395,128,0,0" VerticalAlignment="Top" Width="152" RenderTransformOrigin="0.5,0.5">
+                    <Separator.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-90"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Separator.RenderTransform>
+                </Separator>
+                <TextBlock x:Name="NewUnitStatsBox" FontSize="14" Foreground="White" HorizontalAlignment="Left" Margin="496,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="114" Width="192"/>
             </Grid>
         </GroupBox>
-        <GroupBox Header="Cost Mulipliers" FontSize="16" FontWeight="Bold" Foreground="White" Margin="30,260,500,70" Background="#D83A4558" Height="120" VerticalAlignment="Top" >
-            <Grid>
-                <Label x:Name="EMult" Content="Energy Multi" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="White"/>
-                <Label x:Name="BTMult" Content="BuildTime Multi" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="White"/>
-
-                <TextBox x:Name="EMultiResult" HorizontalAlignment="Left" Margin="130,15,0,0" VerticalAlignment="Top" FontSize="14" Width="100"/>
-                <TextBox x:Name="BTMultiResult" HorizontalAlignment="Left" Margin="130,50,0,0" VerticalAlignment="Top" FontSize="14" Width="100"/>
-            </Grid>
-        </GroupBox>
-        <Button x:Name="Button_Calculate" Content="Calculate" HorizontalAlignment="Left" Margin="50,400,0,0" VerticalAlignment="Top" Background="#D84474C1" Height="40" Width="80" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" BorderBrush="{x:Null}" Foreground="White" Click="Button_Calculate_Click">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="5"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-        <Button x:Name="Button_Clear" Content="Clear" HorizontalAlignment="Left" Margin="180,400,0,0" VerticalAlignment="Top" Background="#D8C14455" Height="40" Width="80" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" BorderBrush="{x:Null}" Foreground="White" Click="Button_Clear_Click">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="5"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-
-
-        <GroupBox Header="New Unit Cost" FontSize="16" FontWeight="Bold" Foreground="White" Margin="480,100,60,0" Background="#D83A4558" Height="160" VerticalAlignment="Top">
-            <Grid HorizontalAlignment="Left" Width="260">
-                <Label x:Name="NewMCost" Content="Mass Cost" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="White"/>
-                <TextBox x:Name="NewMCostInput" HorizontalAlignment="Left" Margin="130,15,0,0" VerticalAlignment="Top" FontSize="14" Width="100"/>
-                <Label x:Name="NewEMult" Content="Energy Multi" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="White"/>
-                <TextBox x:Name="NewEMultiInput" HorizontalAlignment="Left" Margin="130,55,0,0" VerticalAlignment="Top" FontSize="14" Width="100"/>
-                <Label x:Name="NewBTMult" Content="Build Time Multi" HorizontalAlignment="Left" Margin="10,90,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="White"/>
-                <TextBox x:Name="NewBTMultiInput" HorizontalAlignment="Left" Margin="130,95,0,0" VerticalAlignment="Top" FontSize="14" Width="100"/>
-            </Grid>
-        </GroupBox>
-
-        <GroupBox Header="New Energy &amp; BuildTime Cost" FontSize="16" FontWeight="Bold" Foreground="White" Margin="485,270,60,70" Background="#D83A4558" Height="120" VerticalAlignment="Top" >
-            <Grid>
-                <Label x:Name="NewECost" Content="Energy Cost" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="White"/>
-                <Label x:Name="NewBTCost" Content="BuildTime Cost" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="White"/>
-
-                <TextBox x:Name="ECostResult" HorizontalAlignment="Left" Margin="130,15,0,0" VerticalAlignment="Top" FontSize="14" Width="100"/>
-                <TextBox x:Name="BTCostResult" HorizontalAlignment="Left" Margin="130,55,0,0" VerticalAlignment="Top" FontSize="14" Width="100"/>
-            </Grid>
-        </GroupBox>
-
-        <Button x:Name="Button_Calculate2" Content="Calculate" HorizontalAlignment="Left" Margin="520,400,0,0" VerticalAlignment="Top" Background="#D84474C1" Height="40" Width="80" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" BorderBrush="{x:Null}" Foreground="White" Click="Button_Calculate2_Click">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="5"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-        <Button x:Name="Button_Clear2" Content="Clear" HorizontalAlignment="Left" Margin="650,400,0,0" VerticalAlignment="Top" Background="#D8C14455" Height="40" Width="80" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" BorderBrush="{x:Null}" Foreground="White" Click="Button_Clear2_Click">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="5"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-
     </Grid>
+    -->
 </Window>
