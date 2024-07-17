@@ -121,7 +121,6 @@ namespace UCalc
             string MassPercent = CaculatePercentDiffrence(MassCost, NewMassCost);
 
             NewCostResult.Text = "Mass Cost: " + NewMassCost + " ( "+ MassPercent +")" + "\nEnergy Cost: " + EnergyResult + " ( "+ EnergyPercent + ")"+ "\nBuild Time: " + BuildTimeResult + " (" + BuildTimePercent + ")";
-
         }
 
         private void Button_Clear_Cost_Click(object sender, RoutedEventArgs e)
@@ -130,10 +129,6 @@ namespace UCalc
         }
 
         #endregion
-
-
-
-
 
     }
 }
