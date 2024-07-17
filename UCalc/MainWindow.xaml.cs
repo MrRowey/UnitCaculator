@@ -8,34 +8,35 @@ namespace UCalc
     /// </summary>
     public partial class MainWindow : Window
     {
-
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private static string GetEnergyMulti(double MassCost, double EnergyCost)
+        #region Multiplier Caculation
+
+        private double GetEnergyMulti(double MassCost, double EnergyCost)
         {
             // Caculating the Energy Multiplier
-            double EMultCalc = EnergyCost / MassCost;
+            double EnergyMultiCaculation = EnergyCost / MassCost;
 
-            // Convert to String
-            String EMultString = Convert.ToString(Math.Round(EMultCalc, 2));
+            // Round to 2 decimal places
+            double EnergyMulti = Math.Round(EnergyMultiCaculation, 2);
 
             // Return the Energy Multiplier
-            return EMultString;
+            return EnergyMulti;
         }
 
-        private static string GetBuildTimeMulti(double MassCost, double BuildTime)
+        private double GetBuildTimeMulti(double MassCost, double BuildTime)
         {
             // Caculating the Build Time Multiplier
-            double BTMultCalc = BuildTime / MassCost;
+            double BuildTimeCaculation = BuildTime / MassCost;
 
-            // Convert to String
-            String BTMultString = Convert.ToString(Math.Round(BTMultCalc, 2));
+            // Round to 2 decimal places
+            double BuildTimeMulti = Math.Round(BuildTimeCaculation, 2);
 
             // Return the Build Time Multiplier
-            return BTMultString;
+            return BuildTimeMulti;
         }
 
         private void Button_Caculate_Mulit_Click(object sender, RoutedEventArgs e)
@@ -46,11 +47,11 @@ namespace UCalc
             double BuildTime = Convert.ToDouble(BuildTimeCostInput.Text);
 
             // Caculate the Energy and Build Time Multipliers
-            string EResult = GetEnergyMulti(MassCost, EnergyCost);
-            string BTResult = GetBuildTimeMulti(MassCost, BuildTime);
+            double EnergyMultiResult = GetEnergyMulti(MassCost, EnergyCost);
+            double BuildTimeMultiResult = GetBuildTimeMulti(MassCost, BuildTime);
 
             // Display the Results
-            MulitResult.Text = "Energy Mulit: " + EResult + "\nBuild Time Multi: " + BTResult;
+            MulitResult.Text = "Energy Mulit: " + EnergyMultiResult + "\nBuild Time Multi: " + BuildTimeMultiResult;
         }
 
         private void Button_Clear_Mulitplier_Click(object sender, RoutedEventArgs e)
@@ -58,43 +59,68 @@ namespace UCalc
             MulitResult.Text = "";
         }
 
+        #endregion
 
-        private static string GetEnergyCost(double MassCost, double EnergyMulti)
+        #region New Cost Caculation
+
+        private double GetEnergyCost(double MassCost, double EnergyMulti)
         {
-            // Caculate the Energy and Build Time Multipliers
+            // Caculate the Energy Cost
+            double EnergyCostCaculation = MassCost * EnergyMulti;
 
-            double ECostCalc = MassCost * EnergyMulti;
-
-            // Convert to String
-            String ECostString = Convert.ToString(ECostCalc);
-
-            return ECostString;
+            // Round to 2 decimal places
+            double EnergyCost = Math.Round(EnergyCostCaculation, 2);
+            
+            // Return the Energy Cost
+            return EnergyCost;
         }
 
-        private static string GetBuildTime(double MassCost, double BuildTimeMulti)
+        private double GetBuildTime(double MassCost, double BuildTimeMulti)
         {
-            // Caculate the Energy and Build Time Multipliers
+            // Caculate the Build Time
+            double BuildTimeCaculation = MassCost * BuildTimeMulti;
 
-            double BTCalc = MassCost * BuildTimeMulti;
+            // Round to 2 decimal places
+            double BuildTime = Math.Round(BuildTimeCaculation, 2);
 
-            // Convert to String
-            String BTString = Convert.ToString(BTCalc);
-
-            return BTString;
+            // Return the Build Time
+            return BuildTime;
         }
+
+        private string CaculatePercentDiffrence(double OldValue, double NewValue)
+        {
+            double Increese = NewValue - OldValue;
+            double result = (Increese / OldValue) * 100;
+
+            if (result < 0)
+            {
+                return Convert.ToString(Math.Round(result, 2)) + "%";
+            }
+            else
+            {
+                return "+" + Convert.ToString(Math.Round(result, 2)) + "%";
+            }
+        }
+
 
         private void Button_Calculate_Cost_Click(object sender, RoutedEventArgs e)
         {
+            double MassCost = Convert.ToDouble(MassCostInput.Text);
+            double EnergyCost = Convert.ToDouble(EnergyCostInput.Text);
+            double BuildTime = Convert.ToDouble(BuildTimeCostInput.Text);
+            double NewMassCost = Convert.ToDouble(NewMCostInput.Text);
+            double NewEnergyMulti = Convert.ToDouble(NewEMultiInput.Text);
+            double NewBuildTimeMulti = Convert.ToDouble(NewBTMultiInput.Text);
+
             // Getting the users Input
-            double EnergyMulit = Convert.ToDouble(NewEMultiInput.Text);
-            double MassCost = Convert.ToDouble(NewMCostInput.Text);
-            double BuildTimeMulit = Convert.ToDouble(NewBTMultiInput.Text);
+            double EnergyResult = GetEnergyCost(MassCost, NewEnergyMulti);
+            double BuildTimeResult = GetBuildTime(MassCost, NewBuildTimeMulti);
 
+            string EnergyPercent = CaculatePercentDiffrence(EnergyCost, EnergyResult);
+            string BuildTimePercent = CaculatePercentDiffrence(BuildTime, BuildTimeResult);
+            string MassPercent = CaculatePercentDiffrence(MassCost, NewMassCost);
 
-            string EResult = GetEnergyCost(MassCost, EnergyMulit);
-            string BTResult = GetBuildTime(MassCost, BuildTimeMulit);
-
-            NewCostResult.Text = "Mass Cost: " + MassCost + "\nEnergy Cost: " + EResult + "\nBuild Time: " + BTResult;
+            NewCostResult.Text = "Mass Cost: " + NewMassCost + " ( "+ MassPercent +")" + "\nEnergy Cost: " + EnergyResult + " ( "+ EnergyPercent + ")"+ "\nBuild Time: " + BuildTimeResult + " (" + BuildTimePercent + ")";
 
         }
 
@@ -102,5 +128,12 @@ namespace UCalc
         {
             NewCostResult.Text = "";
         }
+
+        #endregion
+
+
+
+
+
     }
 }
