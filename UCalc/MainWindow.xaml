@@ -5,27 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UCalc"
         mc:Ignorable="d"
-        Height="600" Width="920"
-        WindowStyle="None"
-        AllowsTransparency="True">
+        Height="500" Width="600"
+        Title="Unit Balance Caculator"
+        WindowStyle="SingleBorderWindow">
     <Window.Background>
-        <SolidColorBrush Opacity="0.8" Color="#D83A4558"/>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#090979" Offset="0.2"/>
+            <GradientStop Color="#00d4ff" Offset="1"/>
+        </LinearGradientBrush>
     </Window.Background>
     <Border>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="25"/>
                 <ColumnDefinition  />
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="75"/>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="50"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
-                <RowDefinition/>
+                <RowDefinition Height="120"/>
                 <RowDefinition Height="50"/>
                 <RowDefinition/>
                 <RowDefinition Height="50"/>
@@ -34,7 +35,7 @@
                 <ImageBrush ImageSource="/Images/bg.jpg" Opacity="0.85"/>
             </Grid.Background>-->
 
-            <Label x:Name="Title" Content="Unit Balance Caculator" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="0"/>
+            <Label x:Name="Title" Content="Unit Balance Caculator" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="0" Foreground="White"/>
 
             <!-- Current Cost -->            
             <StackPanel Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Orientation="Vertical" Background="#393e46">
@@ -47,28 +48,29 @@
                         <RowDefinition Height="30"/>
                         <RowDefinition Height="10"/>
                         <RowDefinition Height="30"/>
+                        <RowDefinition Height="10"/>
                         <RowDefinition Height="30"/>
+                        <RowDefinition Height="10"/>
                         <RowDefinition Height="30"/>
-                        <RowDefinition Height="30"/>
-                        <RowDefinition Height="30"/>
-                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="10"/>
                     </Grid.RowDefinitions>
 
                     <Label x:Name="CostTitle" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Grid.Row="0" Grid.ColumnSpan="2" Foreground="White">
                         <TextBlock TextDecorations="Underline">Current Cost</TextBlock>
                     </Label>
 
-                    <Label Grid.Row="1" HorizontalAlignment="Center" Content="Energy Cost" FontSize="14" FontWeight="Bold" Foreground="#FFE8D400"/>
-                    <TextBox Grid.Row="2" x:Name="EnergyCostInput" FontSize="14" Width="100"/>
+                    <Label Grid.Row="2" HorizontalAlignment="Center" Content="Energy Cost" FontSize="12" FontWeight="Bold" Foreground="#FFE8D400"/>
+                    <TextBox Margin="3" Grid.Row="2" Grid.Column="1" x:Name="EnergyCostInput" FontSize="12" Width="100"/>
 
-                    <Label Grid.Row="3" HorizontalAlignment="Center" Content="Mass Cost" FontSize="14" FontWeight="Bold" Foreground="#FF00D803"/>
-                    <TextBox Grid.Row="4" x:Name="MassCostInput" FontSize="14" Width="100"/>
+                    <Label Grid.Row="4" HorizontalAlignment="Center" Content="Mass Cost" FontSize="12" FontWeight="Bold" Foreground="#FF00D803"/>
+                    <TextBox Grid.Row="4" Grid.Column="1" Margin="3" x:Name="MassCostInput" FontSize="12" Width="100"/>
 
-                    <Label Grid.Row="5" HorizontalAlignment="Center" Content="Build Time" FontSize="14" FontWeight="Bold" Foreground="#FFf"/>
-                    <TextBox Grid.Row="6" x:Name="BuildTimeCostInput" FontSize="14" Width="100"/>
+                    <Label Grid.Row="6" HorizontalAlignment="Center" Content="Build Time" FontSize="12" FontWeight="Bold" Foreground="#FFf"/>
+                    <TextBox Grid.Row="6" Grid.Column="1" Margin="3" x:Name="BuildTimeCostInput" FontSize="12" Width="100"/>
                     
                 </Grid>
             </StackPanel>
+            
             <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button x:Name="Button_Calculate" Content="Calculate" Background="#D84474C1" Height="40" Width="80" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" BorderBrush="{x:Null}" Foreground="White" Click="Button_Caculate_Mulit_Click">
                     <Button.Resources>
@@ -134,8 +136,8 @@
                     <TextBox Grid.Row="5" Grid.Column="1" Margin="3" x:Name="NewBTMultiInput" FontSize="14" Width="100"/>
 
                 </Grid>
-
             </StackPanel>
+            
             <StackPanel Grid.Column="3" Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button x:Name="Button_ReCalculate" Content="Calculate" Background="#D84474C1" Height="40" Width="80" FontSize="14" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" BorderBrush="{x:Null}" Foreground="White" Click="Button_Calculate_Cost_Click">
                     <Button.Resources>
@@ -154,9 +156,20 @@
             </StackPanel>
 
             <!-- Cost Multipliers Results -->
-            <StackPanel Grid.Column="3" Grid.Row="4" HorizontalAlignment="Center" Width="200" Background="#393e46">
-                <Label Content="New Unit Costs" FontSize="16" FontWeight="Bold" Foreground="#fff"/>
-                <TextBlock x:Name="NewCostResult" Margin="10,0,10,0" Foreground="White" FontSize="14"/>
+            <StackPanel Grid.Column="3" Grid.Row="4" Orientation="Vertical" HorizontalAlignment="Center" Background="#393e46">
+                <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+
+                    <Label Grid.Row="0" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold" Foreground="#fff">
+                        <TextBlock TextDecorations="Underline">New Unit Costs</TextBlock>
+                    </Label>
+                    <TextBlock Grid.Row="1" x:Name="NewCostResult" Margin="10,0,10,0" Foreground="White" FontSize="14"/>
+                    
+                </Grid>
             </StackPanel>
 
         </Grid>

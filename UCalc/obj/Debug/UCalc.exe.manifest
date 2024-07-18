@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="UCalc.exe" size="979888">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="UCalc.exe" size="981424">
       <assemblyIdentity name="UCalc" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ALD9iMDMI0qIJX1jXGIUaEJ3P+xshRaJ6P7ryaHdy+g=</dsig:DigestValue>
+        <dsig:DigestValue>Ixyk//RduS4d3/BCnUTV7wa/8FgTrfrpWowab1q8LWk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
