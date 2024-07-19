@@ -156,7 +156,7 @@
             </StackPanel>
 
             <!-- Cost Multipliers Results -->
-            <StackPanel Grid.Column="3" Grid.Row="4" Orientation="Vertical" HorizontalAlignment="Center" Background="#393e46">
+            <StackPanel Grid.Column="3" Grid.Row="4" Orientation="Vertical" Background="#393e46">
                 <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30"/>

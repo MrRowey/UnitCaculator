@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-F:\GitRepos\UnitCaculator\UCalc\obj\Debug\
+C:\Users\rowjo\Documents\GitHub\UnitCaculator\UCalc\obj\Debug\
 UCalc
 none
 false
 DEBUG;TRACE
-F:\GitRepos\UnitCaculator\UCalc\App.xaml
-1219584333
+C:\Users\rowjo\Documents\GitHub\UnitCaculator\UCalc\App.xaml
+1163907793
 
-6-502434485
+6-71756345
 13-1310406943
-MainWindow.xaml;
+..\..\FAFToolbox\MainWindow.xaml;
 
-False
+True
 
